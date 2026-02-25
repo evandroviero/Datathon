@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API - Previsão de Ações (LSTM)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1a1a1a;
+            margin-top: 25px;
+        }
+        p {
+            font-size: 1.1rem;
+        }
+        .docs-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .docs-links a {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: #007bff; 
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .docs-links a:hover {
+            background-color: #0056b3;
+        }
+        .docs-links a.redoc {
+            background-color: #28a745; 
+        }
+        .docs-links a.redoc:hover {
+            background-color: #218838;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>API de Previsão de Ações</h1>
+        
+        <p>
+            Esta API foi desenvolvida como solução para o <strong>Tech Challenge - Fase 4</strong>.
+        </p>
+        <p>
+            Utilizamos um modelo de Redes Neurais <strong>Long Short-Term Memory (LSTM)</strong> 
+            para prever valores de fechamento de ações, e o <strong>FastAPI</strong> 
+            para servir este modelo como uma API RESTful.
+        </p>
+
+        <h2>Documentação da API</h2>
+        
+        <p>
+            A API gera documentação interativa automaticamente. <br>
+            Você pode testar os <i>endpoints</i> diretamente pelo navegador:
+        </p>
+
+        <div class="docs-links">
+            <a href="/docs" target="_blank">Documentação (Swagger UI)</a>
+            <a href="/redoc" target="_blank" class="redoc">Documentação (ReDoc)</a>
+        </div>
+
+        <div class="footer">
+            <p>Projeto de Modelo Preditivo com LSTM</p>
+        </div>
+    </div>
+
+</body>
+</html>
