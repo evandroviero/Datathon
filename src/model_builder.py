@@ -11,6 +11,9 @@ from sklearn.metrics import classification_report, confusion_matrix, ConfusionMa
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline
 
+from src.data_collector import DataCollector
+
+
 class ModelBuilder:
     def __init__(self, df: pd.DataFrame, target_col: str = "classe_defas"):
         self.target_col = target_col
@@ -205,6 +208,29 @@ class ModelBuilder:
         errors.to_csv("analise_de_erros_modelo.csv", index=False)
         print("💾 Relatório salvo como 'analise_de_erros_modelo.csv'")
         return errors
+    
+    def predict(self, new_data: pd.DataFrame) -> list:
+        data_collector = DataCollector()
+        new_data = data_collector.instituicao(new_data)
+        new_data = data_collector.psicologia(new_data)
+        new_data = data_collector.idade(new_data)
+        model_artifact = joblib.load(self.file_path_model)
+
+        pipeline = model_artifact["pipeline"]
+        threshold = model_artifact["threshold"]
+
+        y_proba = pipeline.predict_proba(new_data)
+        classes = pipeline.classes_
+        severa_index = list(classes).index("Severa")
+
+        predictions = []
+
+        for probs in y_proba:
+            if probs[severa_index] > threshold:
+                predictions.append("Severa")
+            else:
+                predictions.append(classes[probs.argmax()])
+        return predictions
 
 
     def train(self):
