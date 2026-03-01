@@ -17,10 +17,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY api/ ./api/
 COPY model/ ./model/
 COPY app/ ./app/
+COPY src/ ./src/
+COPY data/ ./data/
+COPY template/ ./template/
 
 
-# 7. Criar pastas necessárias para logs
+# 7. Criar pastas necessárias
 RUN mkdir -p logs
+RUN mkdir -p data
 
 # 8. Expor a porta que o FastAPI utilizará
 EXPOSE 8000

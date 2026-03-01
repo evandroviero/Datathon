@@ -1,3 +1,14 @@
 # MacOS
 .DS_Store
 ._*
+
+# Python
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Git
+.git
+.gitignore
