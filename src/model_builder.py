@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import joblib
 from sklearn.model_selection import train_test_split, RepeatedStratifiedKFold, cross_validate
 from sklearn.compose import ColumnTransformer
@@ -137,10 +137,10 @@ class ModelBuilder:
         cm = confusion_matrix(y_test, y_pred, labels=classes)
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=classes)
 
-        fig, ax = plt.subplots(figsize=(8, 6))
-        disp.plot(cmap="Blues", ax=ax)
-        plt.title("Matriz de Confusão - Threshold Otimizado")
-        plt.show()
+        # fig, ax = plt.subplots(figsize=(8, 6))
+        # disp.plot(cmap="Blues", ax=ax)
+        # plt.title("Matriz de Confusão - Threshold Otimizado")
+        # plt.show()
 
         # plt.figure(figsize=(8, 6))
         # plt.plot(recall, precision)
@@ -165,11 +165,11 @@ class ModelBuilder:
         importances = model.feature_importances_
         indices = np.argsort(importances)[-15:] # Top 15
 
-        plt.figure(figsize=(10, 6))
-        plt.title("Top 15 Feature Importances (Verifique vazamentos!)")
-        plt.barh(range(len(indices)), importances[indices], align='center')
-        plt.yticks(range(len(indices)), [all_features[i] for i in indices])
-        plt.show()
+        # plt.figure(figsize=(10, 6))
+        # plt.title("Top 15 Feature Importances (Verifique vazamentos!)")
+        # plt.barh(range(len(indices)), importances[indices], align='center')
+        # plt.yticks(range(len(indices)), [all_features[i] for i in indices])
+        # plt.show()
 
     def export_error_analysis(self, X_test: pd.DataFrame, y_test: pd.Series):
         """
@@ -211,9 +211,9 @@ class ModelBuilder:
     
     def predict(self, new_data: pd.DataFrame) -> list:
         data_collector = DataCollector()
-        new_data = data_collector.instituicao(new_data)
-        new_data = data_collector.psicologia(new_data)
-        new_data = data_collector.idade(new_data)
+        # new_data = data_collector.instituicao(new_data)
+        # new_data = data_collector.psicologia(new_data)
+        # new_data = data_collector.idade(new_data)
         model_artifact = joblib.load(self.file_path_model)
 
         pipeline = model_artifact["pipeline"]
